@@ -4,40 +4,42 @@ import { z } from "zod"
 import crypto from "crypto"
 
 const contactSchema = z.object({
-  firstName: z.string().min(1),
+  firstName: z.string().min(1, "First Name is required"),
   lastName: z.string().optional(),
-  email: z.string().email(),
+  email: z.string().email("Enter a valid email"),
   organization: z.string().optional(),
-  message: z.string().min(1).max(2000),
+  message: z.string().min(1, "Message is required").max(2000),
 })
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-
-    // Validate
+         // Validate input
     const parsed = contactSchema.safeParse(body)
     if (!parsed.success) {
       return NextResponse.json(
-        { error: "Validation failed", details: parsed.error.flatten() },
+        {
+          error: "Validation failed",
+          fields: parsed.error.flatten().fieldErrors,
+        },
         { status: 400 }
       )
     }
 
     let { firstName, lastName, email, organization, message } = parsed.data
 
-    // Normalize fields
+        // Normalize fields
     const name = `${firstName} ${lastName || ""}`.trim()
     const company = organization || null
 
-    // Sanitization
+        // Sanitization
     email = email.trim().toLowerCase()
     message = message.trim()
 
     const db = await getDatabase()
     const collection = db.collection("contacts")
 
-    //Hash (duplicate prevention)
+        //Hash (duplicate prevention)
     const hash = crypto
       .createHash("sha256")
       .update(email + message)
@@ -56,13 +58,13 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    // IP
+       // IP logging (for security and analytics) - ensure compliance with privacy laws
     const ip =
       request.headers.get("x-forwarded-for") ||
       request.headers.get("x-real-ip") ||
       "unknown"
 
-    //Insert
+         //Insert into database
     const result = await collection.insertOne({
       name,
       email,
