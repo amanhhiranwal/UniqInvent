@@ -88,3 +88,10 @@
     @apply bg-background text-foreground;
   }
 }
+
+.hover-gradient:hover {
+  background: linear-gradient(90deg, #00D4AA, #7B6FE8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

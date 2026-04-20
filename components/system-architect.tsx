@@ -87,13 +87,13 @@ function ScrollCard({
   index: number
   scrollYProgress: MotionValue<number>
 }) {
-  const total = architectCards.length
+   const total = architectCards.length
   const seg = 1 / total
   const enter = index * seg
 
   const y = useTransform(
     scrollYProgress,
-    [Math.max(0, enter - 0.05), Math.min(1, enter + seg * 0.6)],
+    [enter, Math.min(1, enter + seg * 0.3)],  // enter - 0.05 hata diya, 0.6 → 0.5
     ["100vh", "0vh"],
   )
 
@@ -139,7 +139,7 @@ export function SystemArchitect() {
   })
 
   return (
-    <div ref={trackRef} style={{ height: "400vh" , zIndex: 0}} className="relative">
+    <div ref={trackRef} style={{ height: "500vh", zIndex: 0 }} className="relative">
       <div className="sticky top-0 h-screen overflow-hidden">
 
         {/* Background */}

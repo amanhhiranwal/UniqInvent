@@ -34,6 +34,7 @@ export function Solutions() {
       className="py-20 pb-28 px-10 min-h-[500px]"
       style={{
         background: "linear-gradient(160deg, #0e2a2a 0%, #0a1a2e 40%, #080f1a 100%)",
+         boxShadow: "0 -40px 80px rgba(0,0,0,0.6)",
       }}
     >
       {/* Header */}
@@ -68,7 +69,7 @@ export function Solutions() {
               onMouseLeave={() => setHoveredIndex(null)}
               className="relative flex flex-col items-center text-center px-7 py-14 cursor-pointer transition-colors duration-300"
               style={{
-                background: isHovered ? "#0d1e30" : "#0b1929",
+                background: isHovered ? "#090A18" : "#090A18",
                 borderRight: isLast ? "none" : "1px solid rgba(255,255,255,0.07)",
               }}
             >
@@ -109,11 +110,12 @@ export function Solutions() {
 
               {/* Bottom Bar */}
               <div
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] transition-all duration-300"
-                style={{
-                  background: "#4ecba0",
-                  width: isHovered ? "38%" : "0%",
-                }}
+       className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[1.5px] transition-all duration-400"
+  style={{
+    background: "linear-gradient(90deg, transparent, #00D4AA, transparent)",
+    boxShadow: "0 0 8px 1px #00D4AA88",
+    width: isHovered ? "70%" : "0%",
+  }}
               />
             </div>
           )

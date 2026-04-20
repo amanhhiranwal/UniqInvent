@@ -14,10 +14,19 @@ export default function Home() {
       <Header />
       <Hero />
       <Domains />
-      <SystemArchitect />
-      <Solutions />
-      <Contact/>
-      <Footer />
+
+     <div className="relative" style={{ height: "500vh" }}>
+  <div className="sticky top-0 z-0">
+    <SystemArchitect />
+  </div>
+</div>
+
+<div className="relative z-10 -mt-[100vh]">
+  <Solutions />
+  <Contact />
+  <Footer />
+</div>
+
     </main>
   )
 }

@@ -145,12 +145,13 @@ export function Hero() {
             <br />
             Transformation{" "}
             <span
-              className="italic font-light inline-block pr-1"
+              className="italic font-light inline-block pr-3"
               style={{
                 background: "linear-gradient(90deg, #00d4aa 0%, #00b4d8 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
+                paddingRight: "0.2em",
               }}
             >
               for Tomorrow
@@ -165,7 +166,7 @@ export function Hero() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm">
               Explore the Domains
             </Button>
@@ -175,7 +176,32 @@ export function Hero() {
             >
               Get in Touch
             </Button>
-          </div>
+          </div> */}
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+  <Button
+    className="
+      bg-primary text-primary-foreground px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
+      transition-all duration-300
+      hover:shadow-[0_0_30px_8px_rgba(0,255,200,0.4)]
+      hover:brightness-105
+    "
+  >
+    Explore the Domains
+  </Button>
+
+  <Button
+  variant="outline"
+  className="
+    border border-white/30 text-muted-foreground bg-transparent px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
+    transition-all duration-300
+    hover:bg-transparent hover:border-white/60 hover:text-white
+    hover:shadow-[0_0_20px_4px_rgba(255,255,255,0.08),inset_0_0_20px_2px_rgba(255,255,255,0.04)]
+  "
+>
+  Get in Touch
+</Button>
+</div>
         </div>
       </div>
 

@@ -4,6 +4,7 @@ import Link from "next/link"
 import { ChevronDown, Menu, X } from "lucide-react"
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import Image from "next/image";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -18,18 +19,21 @@ export function Header() {
   }, [])
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <header className={`static top-0 left-0 right-0 z-50 transition-all duration-300 ${
       scrolled ? "bg-background/95 backdrop-blur-md border-b border-border/50" : "bg-transparent"
     }`}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <span className="text-2xl font-light tracking-tight">
-              <span className="text-foreground">Uniq</span>
-              <span className="text-primary">invent</span>
-            </span>
-          </Link>
+         <Link href="/" className="flex items-center">
+  <Image
+    src="/Vector (1).png"
+    alt="Uniqinvent"
+    width={150}
+    height={40}
+    priority
+  />
+</Link>
 
           {/* Desktop Navigation - Centered */}
           <nav className="hidden md:flex items-center gap-10">
