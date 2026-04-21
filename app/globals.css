@@ -95,3 +95,36 @@
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+  .custom-input::placeholder {
+    color: #2e3f5c;
+    transition: color 0.2s;
+  }
+  .custom-input:hover::placeholder,
+  .custom-input:focus::placeholder {
+    color: #00d4aa;
+  }
+
+
+
+
+ .node-ring {
+  animation: nodeRingPulse 2.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes nodeRingPulse {
+  0%, 100% { transform: scale(1);    opacity: 1;   }
+  50%       { transform: scale(1.12); opacity: 0.5; }
+}
+
+.node-tl .node-ring { animation-delay: 0s;    }
+.node-tr .node-ring { animation-delay: -0.6s; }
+.node-bl .node-ring { animation-delay: -1.2s; }
+.node-br .node-ring { animation-delay: -1.8s; } 

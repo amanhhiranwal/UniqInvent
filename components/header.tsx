@@ -37,11 +37,11 @@ export function Header() {
 
           {/* Desktop Navigation - Centered */}
           <nav className="hidden md:flex items-center gap-10">
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
+            <div className="flex items-center gap-1.5 text-sm text-muted-foreground hover-gradient cursor-pointer transition-colors">
               What we do
               <ChevronDown className="h-3.5 w-3.5" />
             </div>
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground cursor-pointer transition-colors">
+            <div className="flex items-center gap-1.5 text-sm text-muted-foreground hover-gradient cursor-pointer transition-colors">
               Who we are
               <ChevronDown className="h-3.5 w-3.5" />
             </div>
@@ -49,12 +49,19 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button 
-              variant="outline" 
-              className="border-muted-foreground/40 text-foreground hover:bg-secondary/50 bg-transparent uppercase text-xs tracking-widest px-6 py-5 rounded-sm"
-            >
-              Contact Us
-            </Button>
+            <Link href="/#contact">
+            <Button
+  variant="outline"
+  className="
+    border border-white/30 text-muted-foreground bg-transparent px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
+    transition-all duration-300
+    hover:bg-transparent hover:border-white/60 hover:text-white
+    hover:shadow-[0_0_20px_4px_rgba(255,255,255,0.08),inset_0_0_20px_2px_rgba(255,255,255,0.04)]
+  "
+>
+  Contact Us
+</Button>
+</Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -78,12 +85,17 @@ export function Header() {
                 Who we are
                 <ChevronDown className="h-4 w-4" />
               </div>
-              <Button 
-                variant="outline" 
-                className="w-full mt-2 border-muted-foreground/40 text-foreground uppercase text-xs tracking-widest"
-              >
-                Contact Us
-              </Button>
+              <Button
+  variant="outline"
+  className="
+    border border-white/30 text-muted-foreground bg-transparent px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
+    transition-all duration-300
+    hover:bg-transparent hover:border-white/60 hover:text-white
+    hover:shadow-[0_0_20px_4px_rgba(255,255,255,0.08),inset_0_0_20px_2px_rgba(255,255,255,0.04)]
+  "
+>
+  Contact Us
+</Button>
             </nav>
           </div>
         )}

@@ -185,6 +185,7 @@ export function Hero() {
       transition-all duration-300
       hover:shadow-[0_0_30px_8px_rgba(0,255,200,0.4)]
       hover:brightness-105
+      hover:-translate-y-2.5
     "
   >
     Explore the Domains

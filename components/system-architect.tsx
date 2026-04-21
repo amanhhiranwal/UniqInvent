@@ -28,7 +28,9 @@ const architectCards = [
   },
 ]
 
-// function ScrollCard({
+
+
+function ScrollCard({
 //   card,
 //   index,
 //   scrollYProgress,
@@ -37,49 +39,16 @@ const architectCards = [
 //   index: number
 //   scrollYProgress: MotionValue<number>
 // }) {
-//   const total = architectCards.length
+//    const total = architectCards.length
 //   const seg = 1 / total
-
 //   const enter = index * seg
 
-//   // Card neeche se aata hai aur apni jagah RUK JAATA HAI — hamesha visible
-//   // Start: screen ke neeche (100vh)
-//   // End: apni natural position (0)
 //   const y = useTransform(
 //     scrollYProgress,
-//     [Math.max(0, enter - 0.05), Math.min(1, enter + seg * 0.6)],
+//     [enter, Math.min(1, enter + seg * 0.5)],  // enter - 0.05 hata diya, 0.6 → 0.5
 //     ["100vh", "0vh"],
 //   )
-
-//   return (
-//     <motion.article style={{ y }} className="relative px-2 py-2">
-
-//       {/* Eyebrow */}
-//       <p className="mb-3 text-[11px] uppercase tracking-[0.28em] text-primary">
-//         {card.eyebrow}
-//       </p>
-
-//       {/* Heading */}
-//       <h3 className="mb-4 text-2xl font-extralight leading-tight md:text-3xl">
-//         <span style={{ color: "rgba(232,237,245,1)" }}>
-//           {card.lead}
-//         </span>{" "}
-//         <span style={{ color: "rgba(232,237,245,0.55)" }}>
-//           {card.rest}
-//         </span>
-//       </h3>
-
-//       {/* Description */}
-//       <p className="max-w-[640px] text-sm leading-7 text-muted-foreground md:text-base">
-//         {card.description}
-//       </p>
-
-//     </motion.article>
-//   )
-// }
-
-function ScrollCard({
-  card,
+    card,
   index,
   scrollYProgress,
 }: {
@@ -87,13 +56,18 @@ function ScrollCard({
   index: number
   scrollYProgress: MotionValue<number>
 }) {
-   const total = architectCards.length
-  const seg = 1 / total
-  const enter = index * seg
+  // Hardcoded triggers — jaldi fire hoge
+  const triggers = [
+    [0.0, 0.1],   // Card 0: 0% se 10% scroll pe aa jaayega
+    [0.1, 0.2],   // Card 1: 10% se 20% scroll pe aa jaayega
+    [0.2, 0.3],   // Card 2: 20% se 30% scroll pe aa jaayega
+  ]
+
+  const [start, end] = triggers[index]
 
   const y = useTransform(
     scrollYProgress,
-    [enter, Math.min(1, enter + seg * 0.3)],  // enter - 0.05 hata diya, 0.6 → 0.5
+    [start, end],
     ["100vh", "0vh"],
   )
 
@@ -104,7 +78,7 @@ function ScrollCard({
     >
       {/* Teal left bar — hover pe visible */}
       <div className="absolute bottom-0 left-0 top-0 w-[2px] rounded-full bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
+       <div className="translate-x-0 translate-y-1 opacity-75 transition-all duration-[400ms] ease-out group-hover:translate-x-5 group-hover:translate-y-0 group-hover:opacity-100">
       {/* Eyebrow */}
       <p className="text-[11px] uppercase tracking-[0.28em] text-primary">
         {card.eyebrow}
@@ -124,6 +98,7 @@ function ScrollCard({
       <p className="max-w-[640px] text-sm leading-7 text-muted-foreground md:text-sm">
         {card.description}
       </p>
+      </div>
 
     </motion.article>
   )
@@ -139,7 +114,7 @@ export function SystemArchitect() {
   })
 
   return (
-    <div ref={trackRef} style={{ height: "500vh", zIndex: 0 }} className="relative">
+    <div ref={trackRef} style={{ height: "300vh", zIndex: 0 }} className="relative">
       <div className="sticky top-0 h-screen overflow-hidden">
 
         {/* Background */}

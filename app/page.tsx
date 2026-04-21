@@ -15,7 +15,7 @@ export default function Home() {
       <Hero />
       <Domains />
 
-     <div className="relative" style={{ height: "500vh" }}>
+     <div className="relative" style={{ height: "300vh" }}>
   <div className="sticky top-0 z-0">
     <SystemArchitect />
   </div>
@@ -23,7 +23,9 @@ export default function Home() {
 
 <div className="relative z-10 -mt-[100vh]">
   <Solutions />
-  <Contact />
+   <section id="contact">
+    <Contact />
+  </section>
   <Footer />
 </div>
 

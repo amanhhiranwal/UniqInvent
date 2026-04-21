@@ -112,7 +112,7 @@ export function Solutions() {
               </p>
 
               {/* Bottom Bar */}
-              <div
+              {/* <div
                 className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[1.5px] transition-all duration-400"
                 style={{
                   background:
@@ -120,7 +120,16 @@ export function Solutions() {
                   boxShadow: "0 0 8px 1px #00D4AA88",
                   width: isHovered ? "70%" : "0%",
                 }}
-              />
+              /> */}
+              <div
+  className="absolute bottom-0 left-1/2 -translate-x-1/2 transition-all duration-500"
+  style={{
+    background: "linear-gradient(90deg, transparent, #00D4AA, transparent)",
+    boxShadow: "rgba(0, 212, 170, -0.4) 0px 0px 1px 0px",
+    width: isHovered ? "75%" : "0%",
+    height: "1px",
+  }}
+/>
             </div>
           );
         })}

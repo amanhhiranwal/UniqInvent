@@ -204,7 +204,7 @@ export function Contact() {
                 <animateMotion
                   dur="2.2s"
                   repeatCount="indefinite"
-                  keyPoints="0;1"
+                  keyPoints="1;0"
                   keyTimes="0;1"
                   calcMode="linear"
                 >
@@ -223,7 +223,7 @@ export function Contact() {
                   dur="2.2s"
                   begin="-0.55s"
                   repeatCount="indefinite"
-                  keyPoints="0;1"
+                  keyPoints="1;0"
                   keyTimes="0;1"
                   calcMode="linear"
                 >
@@ -243,7 +243,7 @@ export function Contact() {
                   dur="2.2s"
                   begin="-1.1s"
                   repeatCount="indefinite"
-                  keyPoints="0;1"
+                  keyPoints="1;0"
                   keyTimes="0;1"
                   calcMode="linear"
                 >
@@ -263,7 +263,7 @@ export function Contact() {
                   dur="2.2s"
                   begin="-1.65s"
                   repeatCount="indefinite"
-                  keyPoints="0;1"
+                  keyPoints="1;0"
                   keyTimes="0;1"
                   calcMode="linear"
                 >
@@ -280,7 +280,7 @@ export function Contact() {
               </circle>
 
               {/* Outer nodes */}
-              <g className="outer-node">
+              <g className="outer-node node-tl">
                 <circle
                   className="node-ring"
                   cx="100"
@@ -313,7 +313,7 @@ export function Contact() {
                   Recovery
                 </text>
               </g>
-              <g className="outer-node">
+              <g className="outer-node node-tr">
                 <circle
                   className="node-ring"
                   cx="380"
@@ -346,7 +346,7 @@ export function Contact() {
                   Displays
                 </text>
               </g>
-              <g className="outer-node">
+              <g className="outer-node node-bl">
                 <circle
                   className="node-ring"
                   cx="100"
@@ -379,7 +379,7 @@ export function Contact() {
                   Platforms
                 </text>
               </g>
-              <g className="outer-node">
+              <g className="outer-node node-br">
                 <circle
                   className="node-ring"
                   cx="380"
@@ -471,14 +471,14 @@ export function Contact() {
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First Name"
-                  className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
+                  className="custom-input w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200 hover:border-[#00d4aa]"
                 />
                 <input
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   placeholder="Last Name"
-                  className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
+                  className="custom-input w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200 hover:border-[#00d4aa]"
                 />
               </div>
               <input
@@ -486,25 +486,29 @@ export function Contact() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email Address"
-                className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
+                className="custom-input w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200 hover:border-[#00d4aa]"
               />
               <input
                 type="text"
                  value={organization}
                 onChange={(e) => setOrganization(e.target.value)}
                 placeholder="Organization"
-                className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
+                className="custom-input w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200 hover:border-[#00d4aa]"
               />
               <input
                 type="text"
                  value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 placeholder="Tell us about your interest"
-                className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
+                className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200 hover:border-[#00d4aa]"
               />
               <button
                 type="submit"
-                className="w-full bg-[#00d4aa] text-[#080d18] text-[11px] font-semibold uppercase tracking-[0.25em] py-5 hover:bg-[#00bfa0] transition-colors duration-200"
+                className="w-full bg-[#00d4aa] text-[#080d18] text-[11px] font-semibold uppercase tracking-[0.25em] py-3 hover:bg-[#00bfa0] transition-colors duration-200  bg-primary text-primary-foreground px-3 text-sm font-medium uppercase tracking-widest rounded-sm
+      transition-all duration-300
+      hover:shadow-[0_0_30px_8px_rgba(0,255,200,0.4)]
+      hover:brightness-105
+      hover:-translate-y-2.5"
               >
                 Send Message
               </button>
