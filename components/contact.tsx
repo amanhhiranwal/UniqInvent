@@ -1,8 +1,44 @@
 "use client";
+import { useState } from "react";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 export function Contact() {
+   const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [organization, setOrganization] = useState("");
+  const [message, setMessage] = useState("");
+
+
+  const handleSubmit = async (e: React.FormEvent) => {
+   
+    e.preventDefault();
+    
+ 
+    try {
+      await axios.post("/api/contact", {
+        firstName,
+        lastName,
+        email,
+        organization,
+        message,
+      });
+ 
+      toast.success("Message sent successfully!");
+ 
+      setFirstName("");
+      setLastName("");
+      setEmail("");
+      setOrganization("");
+      setMessage("");
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+    }
+  };
   return (
     <section className="py-24 bg-[#080d18]">
+        <Toaster position="top-right" />
       <style>{`
         @keyframes dashFlow {
           from { stroke-dashoffset: 0; }
@@ -428,31 +464,41 @@ export function Contact() {
               Start a conversation
             </h2>
 
-            <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-8" onSubmit={handleSubmit}>
               <div className="grid grid-cols-2 gap-8">
                 <input
                   type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First Name"
                   className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
                 />
                 <input
                   type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
                   placeholder="Last Name"
                   className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
                 />
               </div>
               <input
                 type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email Address"
                 className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
               />
               <input
                 type="text"
+                 value={organization}
+                onChange={(e) => setOrganization(e.target.value)}
                 placeholder="Organization"
                 className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
               />
               <input
                 type="text"
+                 value={message}
+                onChange={(e) => setMessage(e.target.value)}
                 placeholder="Tell us about your interest"
                 className="w-full bg-transparent border-0 border-b border-[#1e2e48] text-white placeholder:text-[#2e3f5c] text-sm py-3 outline-none focus:border-[#00d4aa] transition-colors duration-200"
               />
