@@ -12,6 +12,7 @@ node_modules/
 .env
 
 # Common ignores
+package-lock.json
 node_modules
 .next/
 .DS_Storea
