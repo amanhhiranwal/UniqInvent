@@ -1,5 +1,5 @@
-"use client"
-import Link from "next/link"
+"use client";
+import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 
@@ -9,20 +9,20 @@ export function Hero() {
       {/* Geometric Constellation Background Pattern */}
       <div className="absolute inset-0 overflow-hidden">
         <video
-    className="w-full h-full object-cover"
-    autoPlay
-    loop
-    muted
-    playsInline
-  >
-    <source src="/Hero-Video.mp4" type="video/mp4" />
-  </video>
+          className="w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        >
+          <source src="/Hero-Video.mp4" type="video/mp4" />
+        </video>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           {/* Main Headline */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-foreground leading-[1.1] mb-8 tracking-tight">
+          {/* <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-foreground leading-[1.1] mb-8 tracking-tight">
             Simplifying a Sustainable
             <br />
             Transformation{" "}
@@ -38,14 +38,45 @@ export function Hero() {
             >
               for Tomorrow
             </span>
+          </h1> */}
+          <h1 className="mx-auto text-center text-[64px] leading-[100%] tracking-[0px] text-foreground mb-8 max-w-[846px] font-[250]">
+            <span className="block whitespace-nowrap">
+              Simplifying a Sustainable
+            </span>
+
+            <span className="block whitespace-nowrap">
+              Transformation{" "}
+              <span
+                className="inline-block pr-[0.2em]"
+                style={{
+                  fontWeight: 200,
+                  background:
+                    "linear-gradient(90deg, #4efcd3 0%, #777bfb 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                for Tomorrow
+              </span>
+            </span>
           </h1>
 
           {/* Subtext */}
-          <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          {/* <p className="text-muted-foreground text-base md:text-lg max-w-2xl mx-auto mb-12 font-light leading-relaxed">
             With a mission to make sustainable systems more structured and
             effective, we design and deliver integrated solutions across lithium
             battery recycling, renewable energy, and EV infrastructure.
-          </p>
+          </p> */}
+
+          <p className="text-muted-foreground text-[18px] leading-[150%] tracking-[0px] mx-auto mb-12 font-light text-center">
+  <span className="block md:whitespace-nowrap">
+    With a mission to make sustainable systems more structured and effective, we design and deliver
+  </span>
+  <span className="block md:whitespace-nowrap">
+    integrated solutions across lithium battery recycling, renewable energy, and EV infrastructure.
+  </span>
+</p>
 
           {/* CTA Buttons */}
           {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -61,31 +92,31 @@ export function Hero() {
           </div> */}
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-  <Button
-    className="
+            <Button
+              className="
       bg-primary text-primary-foreground px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
       transition-all duration-300
       hover:shadow-[0_0_30px_8px_rgba(0,255,200,0.4)]
       hover:brightness-105
       hover:-translate-y-2.5
     "
-  >
-    Explore the Domains
-  </Button>
-<Link href="/#contact">
-  <Button
-  variant="outline"
-  className="
+            >
+              Explore the Domains
+            </Button>
+            <Link href="/#contact">
+              <Button
+                variant="outline"
+                className="
     border border-white/30 text-muted-foreground bg-transparent px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
     transition-all duration-300
     hover:bg-transparent hover:border-white/60 hover:text-white
     hover:shadow-[0_0_20px_4px_rgba(255,255,255,0.08),inset_0_0_20px_2px_rgba(255,255,255,0.04)]
   "
->
-  Get in Touch
-</Button>
-</Link>
-</div>
+              >
+                Get in Touch
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
 

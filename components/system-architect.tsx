@@ -62,13 +62,18 @@ function ScrollCard({
     [0.1, 0.2],   // Card 1: 10% se 20% scroll pe aa jaayega
     [0.2, 0.3],   // Card 2: 20% se 30% scroll pe aa jaayega
   ]
+  // const triggers = [
+  // [0.15, 0.35], // Card 0 → lands in center when section is visible
+  // [0.35, 0.55],
+  // [0.55, 0.75],
+// ]
 
   const [start, end] = triggers[index]
 
   const y = useTransform(
     scrollYProgress,
     [start, end],
-    ["100vh", "0vh"],
+    ["40vh", "0vh"],
   )
 
   return (
@@ -77,7 +82,7 @@ function ScrollCard({
       className="group relative cursor-pointer rounded-lg border border-transparent px-3 py-3 transition-all duration-300 hover:border-white/10 hover:bg-[rgba(8,12,20,0.85)]"
     >
       {/* Teal left bar — hover pe visible */}
-      <div className="absolute bottom-0 left-0 top-0 w-[2px] rounded-full bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="absolute bottom-0 left-0 top-0 w-[2px] rounded-full  opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
        <div className="translate-x-0 translate-y-1 opacity-75 transition-all duration-[400ms] ease-out group-hover:translate-x-5 group-hover:translate-y-0 group-hover:opacity-100">
       {/* Eyebrow */}
       <p className="text-[11px] uppercase tracking-[0.28em] text-primary">
