@@ -40,7 +40,7 @@ export function Domains() {
 
   return (
     <section className="py-24 bg-background">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto">
 
         {/* Section Header */}
         <div className="mb-12">
