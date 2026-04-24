@@ -82,8 +82,8 @@ function ScrollCard({
               fontWeight: 400,
               fontSize: "20px",
               lineHeight: "150%",
-              letterSpacing: "0px",
-              verticalAlign: "middle",
+              // letterSpacing: "0px",
+              // verticalAlign: "middle",
             }}
           >
             {card.lead}
@@ -94,8 +94,8 @@ function ScrollCard({
               fontWeight: 400,
               fontSize: "20px",
               lineHeight: "150%",
-              letterSpacing: "0px",
-              verticalAlign: "middle",
+              // letterSpacing: "0px",
+              // verticalAlign: "middle",
               color: "#F5F5F566",
             }}
           >
@@ -110,8 +110,8 @@ function ScrollCard({
             fontWeight: 300,
             fontSize: "14px",
             lineHeight: "150%",
-            letterSpacing: "0px",
-            verticalAlign: "middle",
+            // letterSpacing: "0px",
+            // verticalAlign: "middle",
             color: "#F5F5F566",
           }}
         >
@@ -119,6 +119,53 @@ function ScrollCard({
         </p>
       </div>
     </motion.article>
+  );
+}
+
+function StaticCard({ card }: { card: (typeof architectCards)[0] }) {
+  return (
+    <article className="group relative cursor-pointer rounded-lg border border-transparent px-3 py-4 transition-all duration-300 hover:bg-[#0b111d]">
+      <div className="absolute bottom-0 left-0 top-0 w-[2px] rounded-full bg-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="pr-4">
+        <p className="text-[11px] uppercase tracking-[0.28em] text-primary mb-1">
+          {card.eyebrow}
+        </p>
+        <h3 className="mb-2">
+          <span
+            style={{
+              fontFamily: "'Work Sans', sans-serif",
+              fontWeight: 400,
+              fontSize: "20px",
+              lineHeight: "150%",
+            }}
+          >
+            {card.lead}
+          </span>{" "}
+          <span
+            style={{
+              fontFamily: "'Work Sans', sans-serif",
+              fontWeight: 400,
+              fontSize: "20px",
+              lineHeight: "150%",
+              color: "#F5F5F566",
+            }}
+          >
+            {card.rest}
+          </span>
+        </h3>
+        <p
+          style={{
+            fontFamily: "'Work Sans', sans-serif",
+            fontWeight: 300,
+            fontSize: "14px",
+            lineHeight: "150%",
+            color: "#F5F5F566",
+          }}
+        >
+          {card.description}
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -132,10 +179,26 @@ export function SystemArchitect() {
   });
 
   return (
+    <>
+
+     {/* ✅ MOBILE: plain stacked layout, no scroll animation */}
+      <div className="block lg:hidden px-4 py-16">
+        <p className="text-xs uppercase tracking-[0.28em] text-primary mb-4">
+          Why Uniqinvent
+        </p>
+        <h2 className="text-3xl font-light text-foreground mb-10">
+          A System Architect
+        </h2>
+        <div className="flex flex-col gap-6">
+          {architectCards.map((card) => (
+            <StaticCard key={card.eyebrow} card={card} />
+          ))}
+        </div>
+      </div>
     <div
       ref={trackRef}
       style={{ height: "300vh", zIndex: 0 }}
-      className="relative"
+      className="relative hidden lg:block"
     >
       <div className="sticky top-15 h-screen overflow-hidden">
         {/* Background */}
@@ -144,20 +207,20 @@ export function SystemArchitect() {
         </div> */}
 
         <div className="container relative mx-auto h-full">
-          <div className="grid h-full grid-cols-1 lg:grid-cols-2 lg:gap-20">
+          <div className="grid h-full grid-cols-2 gap-20">
             {/* LEFT: heading — top-left pe fixed */}
-            <div className="flex flex-col justify-start pt-20 md:pt-24">
+            <div className="flex flex-col justify-start pt-24">
               <p className="text-xs uppercase tracking-[0.28em] text-primary mb-4">
                 Why Uniqinvent
               </p>
-              <h2 className="text-3xl md:text-5xl font-light text-foreground">
+              <h2 className="text-5xl font-light text-foreground">
                 A System Architect
               </h2>
             </div>
 
             {/* RIGHT: cards stack — overflow hidden se clip hoga */}
             <div className="relative h-full overflow-hidden">
-              <div className="absolute inset-0 flex flex-col gap-5 pt-20 md:pt-24">
+              <div className="absolute inset-0 flex flex-col gap-5 pt-24">
                 {architectCards.map((card, i) => (
                   <ScrollCard
                     key={card.eyebrow}
@@ -172,5 +235,6 @@ export function SystemArchitect() {
         </div>
       </div>
     </div>
+    </>
   );
 }

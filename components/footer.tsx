@@ -166,7 +166,10 @@ export function Footer() {
               <ul className="space-y-2">
                 {footerLinks.offerings.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-white/40  transition-colors hover-gradient">
+                    <Link href={link.href} className="text-sm text-white/40  transition-colors hover-gradient"
+                    style={{
+    fontSize: "clamp(11px, 1vw, 16px)",
+  }}>
                       {link.label}
                     </Link>
                   </li>
@@ -182,7 +185,10 @@ export function Footer() {
               <ul className="space-y-2">
                 {footerLinks.company.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-white/40 hover:text-white/80 transition-colors hover-gradient">
+                    <Link href={link.href} className="text-sm text-white/40 hover:text-white/80 transition-colors hover-gradient"
+                    style={{
+    fontSize: "clamp(11px, 1vw, 16px)",
+  }}>
                       {link.label}
                     </Link>
                   </li>
@@ -198,7 +204,11 @@ export function Footer() {
               <ul className="space-y-2">
                 {footerLinks.contact.map((link) => (
                   <li key={link.label}>
-                    <Link href={link.href} className="text-sm text-white/40 hover:text-white/80 transition-colors hover-gradient">
+                    <Link href={link.href}
+                      className="text-sm text-white/40 hover:text-white/80 transition-colors hover-gradient"
+                    style={{
+    fontSize: "clamp(11px, 1vw, 16px)",
+  }}>
                       {link.label}
                     </Link>
                   </li>

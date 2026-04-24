@@ -33,9 +33,35 @@ export function Contact() {
       toast.error("Something went wrong. Please try again.");
     }
   };
+
+ function getLineEndFromCircleEdge(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  r: number
+): { x: number; y: number } {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const dist = Math.sqrt(dx * dx + dy * dy);
+
+  return {
+    x: x2 - (dx / dist) * r,
+    y: y2 - (dy / dist) * r,
+  };
+}
+
+const centerX = 240;
+const centerY = 220;
+
+// calculate correct endpoints
+const tl = getLineEndFromCircleEdge(centerX, centerY, 100, 90, 52);
+const tr = getLineEndFromCircleEdge(centerX, centerY, 380, 90, 62);
+const bl = getLineEndFromCircleEdge(centerX, centerY, 100, 360, 62);
+const br = getLineEndFromCircleEdge(centerX, centerY, 380, 360, 52);
   return (
-    <div>
-      <section className="py-24 bg-[#080d18]">
+    <div className="">
+      <section className="py-24 bg-[#080d18] px-5">
         <Toaster position="top-right" />
         <style>{`
         @keyframes dashFlow {
@@ -52,7 +78,7 @@ export function Contact() {
           50%       { opacity: 0.22; }
         }
         .flow-line {
-          stroke-dasharray: 6 5;
+          stroke-dasharray: 100 0;
           animation: dashFlow 1.6s linear infinite;
         }
         .pulse-ring {
@@ -75,7 +101,7 @@ export function Contact() {
         
       `}</style>
 
-        <div className="container mx-auto px-6 lg:px-16">
+        <div className="container mx-auto ">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             {/* Left Column – Animated Network Diagram */}
             <div className="flex justify-center">
@@ -139,10 +165,14 @@ export function Contact() {
                     <stop offset="100%" stopColor="#00d4aa" stopOpacity="0" />
                   </radialGradient>
 
-                  <path id="p-tl" d="M240,220 L100,90" />
+                  {/* <path id="p-tl" d="M240,220 L100,90" />
                   <path id="p-tr" d="M240,220 L380,90" />
                   <path id="p-bl" d="M240,220 L100,360" />
-                  <path id="p-br" d="M240,220 L380,360" />
+                  <path id="p-br" d="M240,220 L380,360" /> */}
+                  <path id="p-tl" d={`M240,220 L${tl.x},${tl.y}`} />
+<path id="p-tr" d={`M240,220 L${tr.x},${tr.y}`} />
+<path id="p-bl" d={`M240,220 L${bl.x},${bl.y}`} />
+<path id="p-br" d={`M240,220 L${br.x},${br.y}`} />
 
                   <linearGradient
                     id="hoverGradient"
@@ -155,47 +185,57 @@ export function Contact() {
                     <stop offset="100%" stopColor="#7B6FE8" />
                   </linearGradient>
                 </defs>
+                <defs>
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stopColor="#4efcd3" />
+      <stop offset="100%" stopColor="#777bfb" />
+    </linearGradient>
+  </defs>
 
                 {/* Animated dashed lines */}
-                <line
-                  className="flow-line"
-                  x1="240"
-                  y1="220"
-                  x2="100"
-                  y2="90"
-                  stroke="#1e3255"
-                  strokeWidth="1.5"
-                />
-                <line
-                  className="flow-line"
-                  x1="240"
-                  y1="220"
-                  x2="380"
-                  y2="90"
-                  stroke="#1e3255"
-                  strokeWidth="1.5"
-                  style={{ animationDelay: "-0.4s" }}
-                />
-                <line
-                  className="flow-line"
-                  x1="240"
-                  y1="220"
-                  x2="100"
-                  y2="360"
-                  stroke="#1e3255"
-                  strokeWidth="1.5"
-                  style={{ animationDelay: "-0.8s" }}
-                />
-                <line
-                  className="flow-line"
-                  x1="240"
-                  y1="220"
-                  x2="380"
-                  y2="360"
-                  stroke="#1e3255"
-                  strokeWidth="1.5"
-                  style={{ animationDelay: "-1.2s" }}
-                />
+                
+              <line
+  className="flow-line"
+  x1={centerX}
+  y1={centerY}
+  x2={tl.x}
+  y2={tl.y}
+  stroke="#1e3255"
+  strokeWidth="1.5"
+/>
+
+<line
+  className="flow-line"
+  x1={centerX}
+  y1={centerY}
+  x2={tr.x}
+  y2={tr.y}
+  stroke="#1e3255"
+  strokeWidth="1.5"
+  style={{ animationDelay: "-0.4s" }}
+/>
+
+<line
+  className="flow-line"
+  x1={centerX}
+  y1={centerY}
+  x2={bl.x}
+  y2={bl.y}
+  stroke="#1e3255"
+  strokeWidth="1.5"
+  style={{ animationDelay: "-0.8s" }}
+/>
+
+<line
+  className="flow-line"
+  x1={centerX}
+  y1={centerY}
+  x2={br.x}
+  y2={br.y}
+  stroke="#1e3255"
+  strokeWidth="1.5"
+  style={{ animationDelay: "-1.2s" }}
+/>
 
                 {/* Travelling dots */}
                 <circle r="4.5" fill="#00d4aa" filter="url(#fDot)">
@@ -284,16 +324,17 @@ export function Contact() {
                     cx="100"
                     cy="90"
                     r="52"
-                    fill="#0a1120"
+                    fill="#090A18"
                     stroke="#1a2a42"
                     strokeWidth="1.2"
+                    
                   />
                   <text
                     className="node-label"
                     x="100"
                     y="84"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -304,7 +345,7 @@ export function Contact() {
                     x="100"
                     y="100"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -316,8 +357,8 @@ export function Contact() {
                     className="node-ring"
                     cx="380"
                     cy="90"
-                    r="52"
-                    fill="#0a1120"
+                    r="62"
+                    fill="#090A18"
                     stroke="#1a2a42"
                     strokeWidth="1.2"
                   />
@@ -326,7 +367,7 @@ export function Contact() {
                     x="380"
                     y="84"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -337,7 +378,7 @@ export function Contact() {
                     x="380"
                     y="100"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -349,8 +390,8 @@ export function Contact() {
                     className="node-ring"
                     cx="100"
                     cy="360"
-                    r="52"
-                    fill="#0a1120"
+                    r="62"
+                    fill="#090A18"
                     stroke="#1a2a42"
                     strokeWidth="1.2"
                   />
@@ -359,7 +400,7 @@ export function Contact() {
                     x="100"
                     y="354"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -370,7 +411,7 @@ export function Contact() {
                     x="100"
                     y="370"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -383,7 +424,7 @@ export function Contact() {
                     cx="380"
                     cy="360"
                     r="52"
-                    fill="#0a1120"
+                    fill="#090A18"
                     stroke="#1a2a42"
                     strokeWidth="1.2"
                   />
@@ -392,7 +433,7 @@ export function Contact() {
                     x="380"
                     y="354"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -403,7 +444,7 @@ export function Contact() {
                     x="380"
                     y="370"
                     textAnchor="middle"
-                    fill="#5a6a85"
+                    fill="#E8EAF6"
                     fontSize="12"
                     fontFamily="Sora, sans-serif"
                   >
@@ -433,7 +474,7 @@ export function Contact() {
                   cx="240"
                   cy="220"
                   r="66"
-                  fill="#0a1120"
+                  fill="#090A18"
                   stroke="url(#cGrad)"
                   strokeWidth="2.2"
                   filter="url(#fGlowCenter)"
@@ -442,7 +483,7 @@ export function Contact() {
                   x="240"
                   y="225"
                   textAnchor="middle"
-                  fill="#00d4aa"
+                  fill="url(#textGradient)"
                   fontSize="14"
                   fontWeight="500"
                   fontFamily="Sora, sans-serif"

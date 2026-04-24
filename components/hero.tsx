@@ -22,24 +22,16 @@ export function Hero() {
       <div className="container mx-auto px-6 relative z-10">
         <div className="max-w-6xl mx-auto text-center">
           {/* Main Headline */}
-          {/* <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extralight text-foreground leading-[1.1] mb-8 tracking-tight">
-            Simplifying a Sustainable
-            <br />
-            Transformation{" "}
-            <span
-              className="italic font-light inline-block pr-3"
-              style={{
-                background: "linear-gradient(90deg, #00d4aa 0%, #00b4d8 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                paddingRight: "0.2em",
-              }}
-            >
-              for Tomorrow
-            </span>
-          </h1> */}
-          <h1 className="mx-auto text-center text-[64px] leading-[100%] tracking-[0px] text-foreground mb-8 max-w-[846px] font-[250]">
+          <h1
+            className="mx-auto text-center  text-foreground mb-8 max-w-[846px]"
+            style={{
+              fontFamily: "'Work Sans', sans-serif",
+              fontWeight: 250,
+              lineHeight: "100%",
+              letterSpacing: "0px",
+              fontSize: "clamp(23px, 4vw, 64px)",
+            }}
+          >
             <span className="block whitespace-nowrap">
               Simplifying a Sustainable
             </span>
@@ -49,7 +41,8 @@ export function Hero() {
               <span
                 className="inline-block pr-[0.2em]"
                 style={{
-                  fontWeight: 200,
+                  fontFamily: "'Work Sans', sans-serif",
+                  fontWeight: 250,
                   background:
                     "linear-gradient(90deg, #4efcd3 0%, #777bfb 100%)",
                   WebkitBackgroundClip: "text",
@@ -69,14 +62,26 @@ export function Hero() {
             battery recycling, renewable energy, and EV infrastructure.
           </p> */}
 
-          <p className="text-muted-foreground text-[18px] leading-[150%] tracking-[0px] mx-auto mb-12 font-light text-center">
-  <span className="block md:whitespace-nowrap">
-    With a mission to make sustainable systems more structured and effective, we design and deliver
-  </span>
-  <span className="block md:whitespace-nowrap">
-    integrated solutions across lithium battery recycling, renewable energy, and EV infrastructure.
-  </span>
-</p>
+          <p
+            className="text-muted-foreground mx-auto mb-12 text-center max-w-[846px]"
+            style={{
+              fontFamily: "'Work Sans', sans-serif",
+              fontWeight: 300, // Light
+              lineHeight: "150%",
+              letterSpacing: "0px",
+              fontSize: "clamp(10px, 4vw, 18px)",
+            }}
+          >
+            <span className="block">
+              With a mission to make sustainable systems more structured and
+              effective, we design and deliver integrated solutions across lithium battery recycling, renewable
+              energy, and EV infrastructure.
+            </span>
+            {/* <span className="block md:whitespace-nowrap">
+              integrated solutions across lithium battery recycling, renewable
+              energy, and EV infrastructure.
+            </span> */}
+          </p>
 
           {/* CTA Buttons */}
           {/* <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -94,7 +99,7 @@ export function Hero() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button
               className="
-      bg-primary text-primary-foreground px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
+      bg-primary text-[#0B4F9F] px-8 py-6 text-sm font-medium uppercase tracking-widest rounded-sm
       transition-all duration-300
       hover:shadow-[0_0_30px_8px_rgba(0,255,200,0.4)]
       hover:brightness-105
