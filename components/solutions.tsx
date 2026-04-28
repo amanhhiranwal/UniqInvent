@@ -47,7 +47,7 @@ export function Solutions() {
           What we enable
         </p>
         <h2
-          className="text-5xl font-extralight leading-tight tracking-tight"
+          className="text-3xl md:text-5xl font-extralight leading-tight tracking-tight"
           style={{ color: "#d6dce6" }}
         >
           Beyond Individual Solutions
@@ -56,7 +56,7 @@ export function Solutions() {
 
       {/* Grid */}
       <div
-        className="grid grid-cols-4 max-w-[1100px] mx-auto"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 w-full max-w-[1100px] mx-auto divide-y divide-x divide-white/[0.07]"
         style={{ border: "1px solid rgba(255,255,255,0.07)" }}
       >
         {solutions.map(({ Icon, title, description }, index) => {
@@ -111,16 +111,7 @@ export function Solutions() {
                 {description}
               </p>
 
-              {/* Bottom Bar */}
-              {/* <div
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[1.5px] transition-all duration-400"
-                style={{
-                  background:
-                    "linear-gradient(90deg, transparent, #00D4AA, transparent)",
-                  boxShadow: "0 0 8px 1px #00D4AA88",
-                  width: isHovered ? "70%" : "0%",
-                }}
-              /> */}
+             
               <div
   className="absolute bottom-0 left-1/2 -translate-x-1/2 transition-all duration-500"
   style={{

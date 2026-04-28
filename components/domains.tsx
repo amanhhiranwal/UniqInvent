@@ -1,51 +1,77 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Image from "next/image"
-import { ArrowRight } from "lucide-react"
+import { useState } from "react";
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 const domains = [
   {
     title: "Commercial LED & Display Systems",
-    description: "End-to-end LED display solutions — from specification through installation and full system integration.",
+    description:
+      "End-to-end LED display solutions — from specification through installation and full system integration.",
     image: "/images/Frame 97.png",
     tags: ["DISPLAY SOLUTIONS", "SYSTEM INTEGRATION"],
     cardType: "inverted",
   },
   {
     title: "Recycling & Resource Recovery",
-    description: "Closing material loops through precision lithium battery recycling and advanced resource reprocessing.",
+    description:
+      "Closing material loops through precision lithium battery recycling and advanced resource reprocessing.",
     image: "/images/recycling.png",
     tags: ["LITHIUM RECOVERY", "MATERIAL PROCESSING"],
     cardType: "default",
   },
   {
     title: "Green Energy Systems",
-    description: "Solar infrastructure, power systems, and UPS solutions — reliable energy for an electrified world.",
+    description:
+      "Solar infrastructure, power systems, and UPS solutions — reliable energy for an electrified world.",
     image: "/images/green-energy.png",
     tags: ["SOLAR POWER", "POWER INFRASTRUCTURE", "UPS"],
     cardType: "default",
   },
   {
     title: "EV Platforms & Managed Services",
-    description: "A smart platform connecting landowners, EV brands, and users — enabling the charging ecosystem at scale.",
+    description:
+      "A smart platform connecting landowners, EV brands, and users — enabling the charging ecosystem at scale.",
     image: "/images/ev-charging.png",
     tags: ["EV CHARGING", "PLATFORM", "LOCATION DISCOVERY"],
     cardType: "inverted",
   },
-]
+];
 
 export function Domains() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container mx-auto px-6">
-
+    <section className="bg-background py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24">
+      <div className="container mx-auto">
         {/* Section Header */}
         <div className="mb-12">
-          <p className="text-xs uppercase tracking-[0.3em] text-primary mb-4">WHAT WE ENABLE</p>
-          <h2 className="text-3xl md:text-4xl font-light text-foreground">
+          <p
+            className="mb-4 uppercase text-[10px] leading-[150%] tracking-[4px]"
+            style={{
+              fontFamily: "'Work Sans', sans-serif",
+              fontWeight: 400, // Regular
+              lineHeight: "150%",
+              letterSpacing: "4px",
+              textTransform: "uppercase",
+              color: "#4DFFD2",
+            }}
+          >
+            WHAT WE ENABLE
+          </p>
+          <h2
+            className=""
+            style={{
+              fontFamily: "'Work Sans', sans-serif",
+              fontWeight: 250, // ExtraLight (custom)
+              lineHeight: "100%",
+              letterSpacing: "0px",
+              verticalAlign: "middle",
+              color: "#E8EAF6",
+              fontSize: "clamp(23px, 4vw, 56px)",
+            }}
+          >
             Four domains. One intelligence.
           </h2>
         </div>
@@ -53,8 +79,8 @@ export function Domains() {
         {/* Domains Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {domains.map((domain, index) => {
-            const isHovered = hoveredIndex === index
-            const isInverted = domain.cardType === "inverted"
+            const isHovered = hoveredIndex === index;
+            const isInverted = domain.cardType === "inverted";
 
             return (
               <div
@@ -79,8 +105,8 @@ export function Domains() {
                           ? "scale-100"
                           : "scale-110"
                         : isHovered
-                        ? "scale-105"
-                        : "scale-100"
+                          ? "scale-105"
+                          : "scale-100"
                     }`}
                   />
                 </div>
@@ -92,7 +118,17 @@ export function Domains() {
                   }`}
                 >
                   {/* Title */}
-                  <h3 className="text-xl md:text-2xl font-light text-foreground leading-snug">
+                  <h3
+                    className="text-[20px] leading-[150%] tracking-[0px]"
+                    style={{
+                      fontFamily: "'Work Sans', sans-serif",
+                      fontWeight: 400, // Regular
+                      lineHeight: "150%",
+                      letterSpacing: "0px",
+                      verticalAlign: "middle",
+                      color: "#E8EAF6",
+                    }}
+                  >
                     {domain.title}
                   </h3>
 
@@ -102,7 +138,17 @@ export function Domains() {
                       isHovered ? "max-h-24 opacity-100" : "max-h-0 opacity-0"
                     }`}
                   >
-                    <p className="text-muted-foreground text-sm md:text-base leading-relaxed pt-3">
+                    <p
+                      className="pt-3 text-[14px] leading-[150%] tracking-[0px]"
+                      style={{
+                        fontFamily: "'Work Sans', sans-serif",
+                        fontWeight: 300, // Light
+                        lineHeight: "150%",
+                        letterSpacing: "0px",
+                        verticalAlign: "middle",
+                        color: "#E8EAF673", // includes opacity
+                      }}
+                    >
                       {domain.description}
                     </p>
                   </div>
@@ -123,7 +169,9 @@ export function Domains() {
                     {/* Arrow */}
                     <div
                       className={`transition-all duration-500 ease-in-out flex-shrink-0 ml-4 ${
-                        isHovered ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
+                        isHovered
+                          ? "opacity-100 translate-x-0"
+                          : "opacity-0 translate-x-4"
                       }`}
                     >
                       <ArrowRight className="w-5 h-5 text-muted-foreground" />
@@ -140,11 +188,10 @@ export function Domains() {
                   <div className="h-full w-full bg-gradient-to-r from-primary via-cyan-400 to-purple-500" />
                 </div>
               </div>
-            )
+            );
           })}
         </div>
-
       </div>
     </section>
-  )
+  );
 }
