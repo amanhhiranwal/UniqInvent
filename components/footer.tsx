@@ -36,6 +36,7 @@ export function Footer() {
                 alt="Uniqinvent Logo"
                 width={56}
                 height={56}
+                className="h-auto w-auto"
               />
             </Link>
             <p className="text-sm text-white/40 leading-7 ">

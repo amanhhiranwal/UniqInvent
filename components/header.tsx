@@ -31,6 +31,7 @@ export function Header() {
     alt="Uniqinvent"
     width={150}
     height={40}
+    className="h-auto w-auto"
     priority
   />
 </Link>

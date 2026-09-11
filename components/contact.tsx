@@ -9,10 +9,13 @@ export function Contact() {
   const [email, setEmail] = useState("");
   const [organization, setOrganization] = useState("");
   const [message, setMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return;
 
+    setIsSubmitting(true);
     try {
       await axios.post("/api/contact", {
         firstName,
@@ -29,8 +32,13 @@ export function Contact() {
       setEmail("");
       setOrganization("");
       setMessage("");
-    } catch (error) {
-      toast.error("Something went wrong. Please try again.");
+    } catch (error: any) {
+      const msg =
+        error?.response?.data?.error ||
+        "Something went wrong. Please try again.";
+      toast.error(msg);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -543,13 +551,15 @@ const br = getLineEndFromCircleEdge(centerX, centerY, 380, 360, 52);
                 />
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="w-full bg-[#00d4aa] text-[#080d18] text-[11px] font-semibold uppercase tracking-[0.25em] py-3 hover:bg-[#00bfa0] transition-colors duration-200  bg-primary text-primary-foreground px-3 text-sm font-medium uppercase tracking-widest rounded-sm
       transition-all duration-300
       hover:shadow-[0_0_30px_8px_rgba(0,255,200,0.4)]
       hover:brightness-105
-      hover:-translate-y-2.5"
+      hover:-translate-y-2.5
+      disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </button>
               </form>
             </div>
