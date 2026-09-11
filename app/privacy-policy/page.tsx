@@ -12,12 +12,11 @@ import {
   companyDetails,
 } from "./data";
 
-import "./privacy-policy.css";
-
-function renderText(text: string) {  if (!text) return null;
+function renderText(text: string) {
+  if (!text) return null;
 
   const parts = text.split(
-    /(https?:\/\/[^\s]+|[\w.+-]+@[\w-]+\.[\w.-]+)/
+    /(https?:\/\/[^\s]+|www\.[^\s]+|[\w.+-]+@[\w-]+\.[\w.-]+)/
   );
 
   return parts.map((part, index) => {
@@ -26,6 +25,20 @@ function renderText(text: string) {  if (!text) return null;
         <a
           key={index}
           href={part}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:opacity-80 transition-opacity"
+        >
+          {part}
+        </a>
+      );
+    }
+
+    if (/^www\./.test(part)) {
+      return (
+        <a
+          key={index}
+          href={`https://${part}`}
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:opacity-80 transition-opacity"
@@ -153,7 +166,7 @@ export default function PrivacyPolicy() {
       <a
         key={section.id}
         href={`#${section.id}`}
-        className={`block text-s leading-5 transition-colors ${
+        className={`block text-sm leading-5 transition-colors ${
           isActive
             ? "text-primary font-medium"
             : "text-white/35 hover:text-white/80"
