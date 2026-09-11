@@ -13,6 +13,7 @@ const footerLinks = {
     { label: "Approach", href: "#" },
     { label: "Ecosystem", href: "#" },
     { label: "Careers", href: "#" },
+    { label: "Privacy Policy", href: "/privacy-policy" },
   ],
   contact: [
     { label: "hello@uniqinvent.com", href: "mailto:hello@uniqinvent.com" },
